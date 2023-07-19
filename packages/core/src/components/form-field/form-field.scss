@@ -1,0 +1,69 @@
+/*
+ * SPDX-FileCopyrightText: 2023 Siemens AG
+ *
+ * SPDX-License-Identifier: MIT
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+:host {
+  display: inline-flex;
+  position: relative;
+
+  align-items: center;
+
+  background-color: var(--theme-input--background);
+  border: solid 1px var(--theme-input--border-color);
+  box-shadow: var(--theme-input--box-shadow);
+
+  height: 2.75rem;
+  width: 12rem;
+  padding: 0 0.5rem;
+
+  .field-value {
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    flex-direction: row;
+    align-items: center;
+  }
+
+  ::slotted(input) {
+    width: 100%;
+  }
+}
+
+:host(.form-field-text) {
+  ::slotted(label) {
+  }
+
+  ::slotted(input) {
+  }
+}
+
+:host(:not(.touched)) {
+  ::slotted(label) {
+    width: 100%;
+  }
+
+  ::slotted(input) {
+    display: none;
+  }
+}
+
+:host(.touched) {
+  .field-value {
+    align-items: self-start;
+    flex-direction: column;
+  }
+
+  ::slotted(label) {
+    height: 24px;
+  }
+
+  ::slotted(input) {
+  }
+}

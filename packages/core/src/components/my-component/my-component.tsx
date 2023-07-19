@@ -15,6 +15,19 @@ import { Component, h, Host } from '@stencil/core';
 })
 export class MyComponent {
   render() {
-    return <Host></Host>;
+    return (
+      <Host>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+          }}
+        >
+          <ix-form-field>
+            <label htmlFor="demo">Example</label>
+            <input type={'text'} name="demo" />
+          </ix-form-field>
+        </form>
+      </Host>
+    );
   }
 }
