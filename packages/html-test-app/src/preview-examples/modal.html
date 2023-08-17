@@ -11,7 +11,7 @@ SPDX-License-Identifier: MIT
   </head>
   <body class="theme-brand-dark">
     <!-- Preview code -->
-    <ix-button>Show modal</ix-button>
+    <ix-button id="show-modal">Show modal</ix-button>
     <template id="modal-example-template">
       <ix-modal-header>Message headline</ix-modal-header>
       <ix-modal-content>Message text lorem ipsum</ix-modal-content>
@@ -23,50 +23,26 @@ SPDX-License-Identifier: MIT
     <script type="module">
       import { showModal, closeModal, dismissModal } from '@siemens/ix';
 
-      function createExampleModal() {
-        const name = 'modal-example';
-        window.customElements.define(
-          name,
-          class extends HTMLElement {
-            isInitalRender = false;
-
-            constructor() {
-              super();
-            }
-
-            connectedCallback() {
-              if (this.isInitalRender) {
-                return;
-              }
-
-              this.isInitalRender = true;
-              this.firstRender();
-            }
-
-            firstRender() {
-              const modalTemplate = document.getElementById(
-                'modal-example-template'
-              );
-              const template = modalTemplate.content.cloneNode(true);
-              this.append(template);
-            }
-          }
-        );
-
-        return name;
-      }
-
       (async function () {
-        const exampleModalName = createExampleModal();
+        const template = document.getElementById('modal-example-template');
+        const showModalButton = document.getElementById('show-modal');
 
-        await window.customElements.whenDefined('ix-button');
-        const button = document.querySelector('ix-button');
+        showModalButton.addEventListener('click', () => {
+          const clone = template.content.cloneNode(true);
+          const modal = document.createElement('ix-modal');
 
-        button.addEventListener('click', async () => {
-          const customModal = document.createElement(exampleModalName);
+          const footer = clone.querySelector('ix-modal-footer');
+          const [cancel, okay] = Array.from(
+            footer.querySelectorAll('ix-button')
+          );
 
-          const modal = await showModal({
-            content: customModal,
+          cancel.addEventListener('click', () => dismissModal(modal));
+          okay.addEventListener('click', () => closeModal(modal, 'Okay'));
+
+          modal.appendChild(clone);
+
+          showModal({
+            content: modal,
           });
         });
       })();
