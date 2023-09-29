@@ -21,7 +21,11 @@ import { writeAngularPreviews } from './write-angular-preview';
 
   const htmlPreviewPath = path.join(
     __dirname,
-    '../html-test-app/src/preview-examples'
+    'node_modules',
+    '@siemens',
+    'html-test-app',
+    'src',
+    'preview-examples'
   );
 
   const staticPath = path.join(

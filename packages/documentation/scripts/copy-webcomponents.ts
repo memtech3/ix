@@ -19,7 +19,7 @@ export const examplePathPath = path.join(
 
 const libDestPath = path.join(examplePathPath, 'lib');
 
-const node_modules = path.join(__dirname, '../../', 'node_modules');
+const node_modules = path.join(__dirname, 'node_modules');
 
 async function loadLib(libName, destPath) {
   const libPath = path.join(node_modules, libName);
