@@ -15,17 +15,16 @@ import clsx from 'clsx';
 import React, { CSSProperties } from 'react';
 import styles from './Card.module.css';
 
-export function Card(
-  props: React.PropsWithChildren<{
-    label: string;
-    isPrimary?: boolean;
-    icon?: string;
-    link: string;
-    size: string;
-    autoWidth?: boolean;
-    style?: CSSProperties;
-  }>
-) {
+export function Card(props: {
+  label: string;
+  isPrimary?: boolean;
+  icon?: string;
+  link: string;
+  size: string;
+  autoWidth?: boolean;
+  style?: CSSProperties;
+  children: JSX.Element[];
+}) {
   const { preferredVersion } = useDocsPreferredVersion();
 
   function link() {

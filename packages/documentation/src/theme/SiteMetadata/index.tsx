@@ -79,7 +79,7 @@ function CanonicalUrlHeaders({ permalink }) {
     </Head>
   );
 }
-export default function SiteMetadata() {
+function SiteMetadata() {
   const {
     i18n: { currentLocale },
   } = useDocusaurusContext();
@@ -101,7 +101,7 @@ export default function SiteMetadata() {
 
       {defaultImage && <PageMetadata image={defaultImage} />}
 
-      <CanonicalUrlHeaders />
+      <CanonicalUrlHeaders permalink={'/'} />
 
       <AlternateLangHeaders />
 
@@ -122,3 +122,5 @@ export default function SiteMetadata() {
     </>
   );
 }
+
+export default SiteMetadata as React.FC;
