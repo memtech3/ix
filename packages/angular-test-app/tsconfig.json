@@ -19,18 +19,18 @@
     "target": "es2020",
     "module": "es2020",
     "lib": ["es2020", "dom"],
-    "preserveSymlinks": true,
+    // "preserveSymlinks": true,
     "paths": {
       "@siemens/ix-angular": ["./../angular/dist"],
       "@siemens/ix-angular/*": ["./../angular/dist"],
-      "@angular/*": ["../node_modules/@angular/*"]
+      "@angular/*": ["./node_modules/@angular/*"]
     }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true,
-    "preserveSymlinks": true
+    "strictTemplates": true
+    // "preserveSymlinks": true
   }
 }

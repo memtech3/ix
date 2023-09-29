@@ -1,9 +1,2 @@
 packages:
-  - 'packages/core'
-  - 'packages/react'
-  - 'packages/angular'
-  - 'packages/vue'
-  - 'packages/aggrid'
-  # - 'packages/aggrid'
-  - 'packages/eslint-config'
-  - 'packages/tsconfig'
+  - 'packages/*'

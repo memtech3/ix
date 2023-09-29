@@ -26,7 +26,7 @@
     "@types/gulp": "^4.0.14",
     "@types/gulp-postcss": "^8.0.4",
     "@types/gulp-sass": "^5.0.2",
-    "ag-grid-community": "29.1.0",
+    "ag-grid-community": "30.2.0",
     "autoprefixer": "10.4.5",
     "cssnano": "^6.0.1",
     "gulp": "^4.0.2",
@@ -40,6 +40,6 @@
   },
   "peerDependencies": {
     "@siemens/ix": "~2.0.1",
-    "ag-grid-community": "^28 || ^29"
+    "ag-grid-community": "^28 || ^29 || ^30"
   }
 }
