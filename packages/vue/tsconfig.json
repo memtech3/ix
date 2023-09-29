@@ -3,17 +3,24 @@
   "include": ["src"],
   "compilerOptions": {
     "declaration": true,
-    "noImplicitAny": false,
-    "removeComments": true,
     "noLib": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "sourceMap": true,
-    "outDir": "./dist",
-    "lib": ["dom", "es2020"],
-    "module": "es2015",
+    "skipLibCheck": true,
+    "allowUnreachableCode": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "lib": ["dom", "esnext"],
+    "module": "esnext",
     "moduleResolution": "node",
-    "target": "es2017",
-    "skipLibCheck": true
-  },
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "outDir": "dist",
+    "removeComments": false,
+    "sourceMap": true,
+    "jsx": "react",
+    "target": "esnext"
+  }
 }
