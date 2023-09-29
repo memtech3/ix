@@ -4,3 +4,4 @@ packages:
   - 'packages/angular'
   # - 'packages/vue'
   - 'packages/eslint-config'
+  - 'packages/tsconfig'
