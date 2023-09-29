@@ -15,17 +15,31 @@
     "dist/"
   ],
   "scripts": {
+    "build": "gulp",
     "test:e2e": "playwright test --reporter html",
     "host-root": "http-server -a 127.0.0.1"
   },
   "devDependencies": {
-    "ag-grid-community": "29.1.0",
-    "@siemens/ix": "~2.0.1",
     "@playwright/test": "^1.32.1",
-    "http-server": "^14.1.1"
+    "@siemens/ix": "~2.0.1",
+    "@siemens/ix-icons": "^2.0.0",
+    "@types/gulp": "^4.0.14",
+    "@types/gulp-postcss": "^8.0.4",
+    "@types/gulp-sass": "^5.0.2",
+    "ag-grid-community": "29.1.0",
+    "autoprefixer": "10.4.5",
+    "cssnano": "^6.0.1",
+    "gulp": "^4.0.2",
+    "gulp-postcss": "^9.0.1",
+    "gulp-sass": "^5.1.0",
+    "http-server": "^14.1.1",
+    "rimraf": "^5.0.5",
+    "sass": "^1.68.0",
+    "ts-node": "^10.9.1",
+    "tsconfig": "workspace:*"
   },
   "peerDependencies": {
-    "ag-grid-community": "^28 || ^29",
-    "@siemens/ix": "~2.0.1"
+    "@siemens/ix": "~2.0.1",
+    "ag-grid-community": "^28 || ^29"
   }
 }
