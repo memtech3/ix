@@ -10,7 +10,7 @@
 import { Component, Element, h, Host, Prop } from '@stencil/core';
 import { BaseButtonProps } from '../button/base-button';
 import { ButtonVariant } from '../button/button';
-import { BaseIconButton } from '../icon-button/base-icon-button';
+import { BaseIconButton } from './base-icon-button';
 
 export type IconButtonVariant = ButtonVariant;
 

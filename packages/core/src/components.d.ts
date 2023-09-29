@@ -483,7 +483,8 @@ export namespace Components {
          */
         "eventDelimiter": string;
         /**
-          * Date format string. See @link https://moment.github.io/luxon/#/formatting?id=table-of-tokens for all available tokens.
+          * Date format string. See
+          * @link https://moment.github.io/luxon/#/formatting?id=table-of-tokens for all available tokens.
          */
         "format": string;
         /**
@@ -536,7 +537,8 @@ export namespace Components {
     }
     interface IxDatetimePicker {
         /**
-          * Date format string. See @link https://moment.github.io/luxon/#/formatting?id=table-of-tokens for all available tokens.
+          * Date format string. See
+          * @link https://moment.github.io/luxon/#/formatting?id=table-of-tokens for all available tokens.
           * @since 1.1.0
          */
         "dateFormat": string;
@@ -577,7 +579,8 @@ export namespace Components {
          */
         "showSeconds": boolean;
         /**
-          * Show time reference input Time reference is default aligned with @see {this.timeFormat}
+          * Show time reference input Time reference is default aligned with
+          * @see { this.timeFormat}
           * @since 1.1.0
          */
         "showTimeReference": any;
@@ -592,7 +595,8 @@ export namespace Components {
          */
         "time": string;
         /**
-          * Time format string. See @link https://moment.github.io/luxon/#/formatting?id=table-of-tokens for all available tokens.
+          * Time format string. See
+          * @link https://moment.github.io/luxon/#/formatting?id=table-of-tokens for all available tokens.
           * @since 1.1.0
          */
         "timeFormat": string;
@@ -1337,7 +1341,8 @@ export namespace Components {
          */
         "home": boolean;
         /**
-          * Icon name from @siemens/ix-icons
+          * Icon name from
+          * @siemens /ix-icons
          */
         "icon": string;
         /**
@@ -1345,7 +1350,8 @@ export namespace Components {
          */
         "notifications": number;
         /**
-          * Icon name from @siemens/ix-icons
+          * Icon name from
+          * @siemens /ix-icons
           * @deprecated since 2.0.0 use `icon` property. Will be removed in 3.0.0
          */
         "tabIcon": string;
@@ -3569,7 +3575,8 @@ declare namespace LocalJSX {
          */
         "eventDelimiter"?: string;
         /**
-          * Date format string. See @link https://moment.github.io/luxon/#/formatting?id=table-of-tokens for all available tokens.
+          * Date format string. See
+          * @link https://moment.github.io/luxon/#/formatting?id=table-of-tokens for all available tokens.
          */
         "format"?: string;
         /**
@@ -3638,7 +3645,8 @@ declare namespace LocalJSX {
     }
     interface IxDatetimePicker {
         /**
-          * Date format string. See @link https://moment.github.io/luxon/#/formatting?id=table-of-tokens for all available tokens.
+          * Date format string. See
+          * @link https://moment.github.io/luxon/#/formatting?id=table-of-tokens for all available tokens.
           * @since 1.1.0
          */
         "dateFormat"?: string;
@@ -3698,7 +3706,8 @@ declare namespace LocalJSX {
          */
         "showSeconds"?: boolean;
         /**
-          * Show time reference input Time reference is default aligned with @see {this.timeFormat}
+          * Show time reference input Time reference is default aligned with
+          * @see { this.timeFormat}
           * @since 1.1.0
          */
         "showTimeReference"?: any;
@@ -3713,7 +3722,8 @@ declare namespace LocalJSX {
          */
         "time"?: string;
         /**
-          * Time format string. See @link https://moment.github.io/luxon/#/formatting?id=table-of-tokens for all available tokens.
+          * Time format string. See
+          * @link https://moment.github.io/luxon/#/formatting?id=table-of-tokens for all available tokens.
           * @since 1.1.0
          */
         "timeFormat"?: string;
@@ -4497,7 +4507,8 @@ declare namespace LocalJSX {
          */
         "home"?: boolean;
         /**
-          * Icon name from @siemens/ix-icons
+          * Icon name from
+          * @siemens /ix-icons
          */
         "icon"?: string;
         /**
@@ -4505,7 +4516,8 @@ declare namespace LocalJSX {
          */
         "notifications"?: number;
         /**
-          * Icon name from @siemens/ix-icons
+          * Icon name from
+          * @siemens /ix-icons
           * @deprecated since 2.0.0 use `icon` property. Will be removed in 3.0.0
          */
         "tabIcon"?: string;

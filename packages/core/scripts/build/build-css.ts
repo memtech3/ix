@@ -10,7 +10,7 @@ import cssnano from 'cssnano';
 import fse from 'fs-extra';
 import path from 'path';
 import postcss from 'postcss';
-import rimraf from 'rimraf';
+import { rimraf } from 'rimraf';
 import sass from 'sass';
 
 const ROOT = path.join(__dirname, '..', '..');
@@ -21,8 +21,8 @@ const DIST = path.join(ROOT, 'dist', 'siemens-ix');
 const DIST_CSS = path.join(ROOT, 'dist-css');
 const DIST_THEME = path.join(ROOT, 'dist-css', 'theme');
 
-function setupDistFolder() {
-  rimraf.sync(DIST_CSS);
+async function setupDistFolder() {
+  await rimraf(DIST_CSS);
   fse.ensureDirSync(DIST_CSS);
   fse.ensureDirSync(DIST_THEME);
 }
@@ -32,8 +32,8 @@ function collectThemeFiles() {
 
   const files = fse.readdirSync(THEME);
   return files
-    .filter((themeName) => fse.existsSync(themePath(themeName)))
-    .map((themeName) => ({
+    .filter(themeName => fse.existsSync(themePath(themeName)))
+    .map(themeName => ({
       filePath: fse.realpathSync(themePath(themeName)),
       themeName: themeName,
     }));
@@ -61,11 +61,7 @@ function compileCore() {
   console.log(`Compile core SCSS (${coreCss})`);
   const { css } = sass.compile(coreCss, {
     sourceMap: false,
-    loadPaths: [
-      SCSS,
-      path.join(ROOT, 'node_modules'),
-      path.join(ROOT, '..', '..', 'node_modules'),
-    ],
+    loadPaths: [SCSS, path.join(ROOT, 'node_modules'), path.join(ROOT, '..', '..', 'node_modules')],
   });
 
   return [
@@ -82,7 +78,7 @@ function copyDistCssToDist() {
 }
 
 (async () => {
-  setupDistFolder();
+  await setupDistFolder();
 
   let cssFiles: {
     path: string;
@@ -93,7 +89,7 @@ function copyDistCssToDist() {
   cssFiles = [...cssFiles, ...compileCore()];
 
   const optimizedCss = await Promise.all(
-    cssFiles.map(async (result) => {
+    cssFiles.map(async result => {
       const { path, css } = result;
 
       return postcss([
@@ -111,10 +107,10 @@ function copyDistCssToDist() {
         from: path,
         to: path,
       });
-    })
+    }),
   );
 
-  optimizedCss.forEach((result) => {
+  optimizedCss.forEach(result => {
     fse.writeFileSync(result.opts.to, result.css);
   });
 

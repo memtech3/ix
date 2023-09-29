@@ -7,10 +7,10 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+import { postcss } from '@stencil-community/postcss';
 import { angularOutputTarget } from '@stencil/angular-output-target';
 import { Config } from '@stencil/core';
 import { JsonDocs } from '@stencil/core/internal';
-import { postcss } from '@stencil/postcss';
 import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
 import { vueOutputTarget } from '@stencil/vue-output-target';
@@ -20,11 +20,11 @@ import path from 'path';
 
 const copyAssets = [
   {
-    src: './../../../node_modules/@siemens/ix-icons/dist',
+    src: './../node_modules/@siemens/ix-icons/dist',
     dest: 'build/ix-icons',
   },
   {
-    src: './../../../node_modules/bootstrap',
+    src: './../node_modules/bootstrap',
     dest: 'build/bootstrap',
   },
 ];

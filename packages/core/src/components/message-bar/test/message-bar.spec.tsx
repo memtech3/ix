@@ -8,7 +8,6 @@
  */
 
 import { newSpecPage } from '@stencil/core/testing';
-import { fireEvent } from '@testing-library/dom';
 import { MessageBar } from '../message-bar';
 
 describe('ix-message-bar', () => {
@@ -32,7 +31,7 @@ describe('ix-message-bar', () => {
     messageBar.addEventListener('closedChange', () => {
       done();
     });
-    fireEvent.click(closeButton);
+    closeButton.click();
   });
 
   it('emits an event when the message is dismissed', async (done) => {
@@ -41,7 +40,7 @@ describe('ix-message-bar', () => {
     });
     window.addEventListener('closedChange', mockCallback);
 
-    fireEvent.click(closeButton);
+    closeButton.click();
     await page.waitForChanges();
 
     window.removeEventListener('closedChange', mockCallback);
