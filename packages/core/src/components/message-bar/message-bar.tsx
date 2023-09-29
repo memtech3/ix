@@ -9,6 +9,7 @@
 
 import {
   Component,
+  Element,
   Event,
   EventEmitter,
   h,
@@ -25,6 +26,8 @@ import { NotificationColor } from '../utils/notification-color';
   shadow: true,
 })
 export class MessageBar {
+  @Element() hostElement!: HTMLIxMessageBarElement;
+
   /**
    * Specifies the type of the alert.
    */
@@ -66,16 +69,19 @@ export class MessageBar {
   }
 
   private closeAlert(el: HTMLElement) {
-    anime({
-      targets: el,
-      duration: MessageBar.duration,
-      opacity: [1, 0],
-      easing: 'easeOutSine',
-      complete: () => {
-        el.classList.add('d-none');
-      },
-    });
-    this.closedChange.emit();
+    const { defaultPrevented } = this.closedChange.emit();
+
+    if (!defaultPrevented) {
+      anime({
+        targets: el,
+        duration: MessageBar.duration,
+        opacity: [1, 0],
+        easing: 'easeOutSine',
+        complete: () => {
+          this.hostElement.remove();
+        },
+      });
+    }
   }
 
   render() {

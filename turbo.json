@@ -23,7 +23,7 @@
     "lint": {
       "cache": false
     },
-    "vrt": {
+    "visual-regression": {
       "cache": false
     },
     "test": {

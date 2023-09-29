@@ -27,7 +27,7 @@
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "release": "node ./scripts/release.js",
     "prepare": "husky install",
-    "vrt": "dotenv -- turbo run vrt",
+    "visual-regression": "dotenv -- turbo run visual-regression",
     "test": "dotenv -- turbo run test"
   },
   "dependencies": {
