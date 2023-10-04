@@ -34,15 +34,16 @@
     "@siemens/ix": "~2.0.1"
   },
   "devDependencies": {
-    "rimraf": "^3.0.2",
-    "vue": "^3.2.45",
     "@typescript-eslint/eslint-plugin": "^5.45.0",
     "@typescript-eslint/parser": "^5.45.0",
     "eslint-config-ix": "*",
-    "eslint-plugin-vue": "^9.9.0"
+    "eslint-plugin-vue": "^9.9.0",
+    "rimraf": "^3.0.2",
+    "typescript": "^5.2.2",
+    "vue": "^3.2.45"
   },
   "peerDependencies": {
-    "vue": ">=3.2.45",
-    "@siemens/ix-icons": "^2.0.0"
+    "@siemens/ix-icons": "^2.0.0",
+    "vue": ">=3.2.45"
   }
 }
