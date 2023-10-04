@@ -24,6 +24,7 @@ jobs:
         DEBIAN_FRONTEND: noninteractive
     steps:
       - uses: actions/checkout@v3
+      - uses: ./.github/workflows/actions/install
 
   build:
     runs-on: ubuntu-latest
