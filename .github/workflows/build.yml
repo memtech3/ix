@@ -27,18 +27,16 @@ jobs:
     needs: [install]
     steps:
       - uses: actions/checkout@v3
+      - uses: ./.github/workflows/actions/install
       - uses: ./.github/workflows/actions/build-cache
       - uses: ./.github/workflows/actions/build
 
   upload-artifacts:
     runs-on: ubuntu-latest
     needs: [build]
-    container:
-      image: node:18.12.1
-      env:
-        DEBIAN_FRONTEND: noninteractive
     steps:
       - uses: actions/checkout@v3
+      - uses: ./.github/workflows/actions/install
       - uses: ./.github/workflows/actions/build-cache
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
@@ -88,21 +86,14 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     needs: [install]
-    container:
-      image: node:18.12.1
-      env:
-        DEBIAN_FRONTEND: noninteractive
     steps:
       - uses: actions/checkout@v3
+      - uses: ./.github/workflows/actions/install
       - uses: ./.github/workflows/actions/lint
 
   lint-commit-message:
     runs-on: ubuntu-latest
     needs: [install]
-    container:
-      image: node:18.12.1
-      env:
-        DEBIAN_FRONTEND: noninteractive
     steps:
       - uses: actions/checkout@v3
         with:
