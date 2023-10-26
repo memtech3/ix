@@ -7,3 +7,4 @@ packages:
   - 'packages/eslint-config'
   - 'packages/figma-plugin'
   - 'packages/html-test-app'
+  - 'packages/documentation'

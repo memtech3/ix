@@ -60,7 +60,7 @@ function sliceHtmlCode(code: string) {
 }
 
 async function fetchSource(path: string) {
-  const response = await fetch(path);
+  const response = await fetch(`${path}.txt`);
   const source = await response.text();
 
   // Docusaurus don' throw a classic 404 if a sub route is not found
@@ -95,7 +95,9 @@ async function fetchHTMLSource(
   return Promise.all(
     files.map(async (file) => {
       try {
-        const source = await fetchSource(`${path}/${frameworkPath}/${file}`);
+        const source = await fetchSource(
+          `${path}/previews/${frameworkPath}/${file}`
+        );
 
         if (!source) {
           return null;

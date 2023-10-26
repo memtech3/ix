@@ -322,8 +322,14 @@ const tasks = new Listr<Context>(
           ].flatMap(async (snippetDirectory) => {
             const files = await fsp.readdir(snippetDirectory);
             return files.flatMap((filePath) => {
+              const file = path.join(snippetDirectory, filePath);
+
+              if (fs.lstatSync(file).isDirectory()) {
+                return Promise.resolve();
+              }
+
               return fs.rename(
-                path.join(snippetDirectory, filePath),
+                file,
                 path.join(snippetDirectory, `${filePath}.txt`)
               );
             });
