@@ -22,7 +22,7 @@ jobs:
       - uses: ./.github/workflows/actions/turbo
 
       - name: Build
-        run: pnpm build --filter \!documentation
+        run: pnpm build --filter @siemens/ix
 
       # - name: Documentation
       #   run: pnpm build --filter documentation
