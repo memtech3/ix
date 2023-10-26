@@ -33,6 +33,9 @@ jobs:
 
       - uses: ./.github/workflows/actions/turbo
 
+      - name: Install Playwright Browsers
+        run: pnpm playwright install chromium--with-deps
+
       - name: Test
         run: pnpm run test --cache-dir=.turbo
 
@@ -45,7 +48,7 @@ jobs:
       - uses: ./.github/workflows/actions/turbo
 
       - name: Install Playwright Browsers
-        run: pnpm playwright install --with-deps
+        run: pnpm playwright install chromium--with-deps
 
       - name: Visual Regression
         run: pnpm run visual-regression --cache-dir=.turbo
