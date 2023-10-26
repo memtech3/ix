@@ -16,9 +16,6 @@
       ],
       "outputMode": "new-only"
     },
-    "test": {
-      "cache": false
-    },
     "start": {
       "dependsOn": ["^build"],
       "cache": true
@@ -26,7 +23,10 @@
     "lint": {
       "cache": false
     },
-    "test:e2e": {
+    "visual-regression": {
+      "cache": false
+    },
+    "test": {
       "cache": false
     }
   }

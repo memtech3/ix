@@ -35,3 +35,17 @@ jobs:
 
       - name: Documentation
         run: pnpm build --cache-dir=.turbo --filter documentation
+
+  visual-test:
+    needs: [build]
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.32.1-focal
+      env:
+        DEBIAN_FRONTEND: noninteractive
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ./.github/workflows/actions/turbo
+      - name: Visual Regression
+        run: pnpm visual-regression --cache-dir=.turbo
