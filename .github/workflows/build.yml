@@ -24,17 +24,17 @@ jobs:
       - name: Build
         run: pnpm build --cache-dir=.turbo --filter \!documentation
 
-  # documentation:
-  #   runs-on: ubuntu-latest
-  #   needs: [build]
-  #   steps:
-  #     - name: Checkout
-  #       uses: actions/checkout@v3
+  test:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
 
-  #     - uses: ./.github/workflows/actions/turbo
+      - uses: ./.github/workflows/actions/turbo
 
-  #     - name: Documentation
-  #       run: pnpm build --cache-dir=.turbo --filter documentation
+      - name: Documentation
+        run: pnpm test --cache-dir=.turbo
 
   visual-test:
     needs: [build]
@@ -48,7 +48,7 @@ jobs:
         run: pnpm playwright install --with-deps
 
       - name: Visual Regression
-        run: pnpm visual-regression --cache-dir=.turbo --stream
+        run: pnpm visual-regression --cache-dir=.turbo
 
       - uses: actions/upload-artifact@v3
         if: always()
