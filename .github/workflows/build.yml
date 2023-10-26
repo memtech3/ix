@@ -24,5 +24,5 @@ jobs:
       - name: Build
         run: pnpm build --cache-dir=.turbo --filter @siemens/ix
 
-      # - name: Documentation
-      #   run: pnpm build --filter documentation
+      - name: Documentation
+        run: pnpm build --cache-dir=.turbo --filter documentation
