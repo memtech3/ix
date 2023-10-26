@@ -18,10 +18,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Install Node.js
+      - name: Setup Node.js environment
         uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: 'pnpm'
 
       - uses: pnpm/action-setup@v2
         name: Install pnpm
@@ -44,3 +45,6 @@ jobs:
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: Build
+        run: pnpm build --filter \!documentation
