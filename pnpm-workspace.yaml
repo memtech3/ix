@@ -1,0 +1,9 @@
+packages:
+  - 'packages/ix'
+  - 'packages/aggrid'
+  - 'packages/echarts'
+  - 'packages/react'
+  - 'packages/react-test-app'
+  - 'packages/eslint-config'
+  - 'packages/figma-plugin'
+  - 'packages/html-test-app'
