@@ -4331,20 +4331,7 @@
       "styles": [],
       "slots": [],
       "parts": [],
-      "listeners": [
-        {
-          "event": "click",
-          "target": "window",
-          "capture": false,
-          "passive": false
-        },
-        {
-          "event": "keydown",
-          "target": "window",
-          "capture": false,
-          "passive": false
-        }
-      ]
+      "listeners": []
     },
     {
       "dirPath": "./src/components/dropdown-button",
@@ -8128,8 +8115,14 @@
           "attr": "max-visible-menu-items",
           "reflectToAttr": false,
           "docs": "Maximum number of menu items to show in case enough vertical space is available.\nExtra menu items will be collapsed to 'show more' menu item.",
-          "docsTags": [],
+          "docsTags": [
+            {
+              "name": "deprecated",
+              "text": "- Has no effect on component. Will get removed with next major release (v3)"
+            }
+          ],
           "default": "9",
+          "deprecation": "- Has no effect on component. Will get removed with next major release (v3)",
           "values": [
             {
               "type": "number"
@@ -11268,12 +11261,6 @@
           "event": "ix-select-item:labelChange",
           "capture": false,
           "passive": false
-        },
-        {
-          "event": "keydown",
-          "target": "window",
-          "capture": false,
-          "passive": false
         }
       ]
     },
@@ -11673,14 +11660,7 @@
         }
       ],
       "parts": [],
-      "listeners": [
-        {
-          "event": "pointerup",
-          "target": "window",
-          "capture": false,
-          "passive": true
-        }
-      ]
+      "listeners": []
     },
     {
       "dirPath": "./src/components/spinner",
