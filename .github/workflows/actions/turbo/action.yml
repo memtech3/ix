@@ -16,9 +16,9 @@ runs:
         cache: 'pnpm'
 
     - name: Get pnpm store directory
-      shell: bash
       run: |
         echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
+      shell: bash
 
     - uses: actions/cache@v3
       name: Setup pnpm cache
@@ -30,3 +30,4 @@ runs:
 
     - name: Install dependencies
       run: pnpm install
+      shell: bash
