@@ -37,7 +37,7 @@ jobs:
         run: pnpm playwright install chromium --with-deps
 
       - name: Test
-        run: pnpm run test --cache-dir=.turbo
+        run: pnpm run test --cache-dir=.turbo --filter @siemens/ix --filter @siemens/ix-angular
 
   visual-test:
     needs: [build]
@@ -51,7 +51,7 @@ jobs:
         run: pnpm playwright install chromium --with-deps
 
       - name: Visual Regression
-        run: pnpm run visual-regression --cache-dir=.turbo
+        run: pnpm run visual-regression --cache-dir=.turbo --filter @siemens/ix --filter @siemens/ix-aggrid
 
       - uses: actions/upload-artifact@v3
         if: always()

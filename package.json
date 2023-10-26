@@ -30,8 +30,8 @@
     "release": "node ./scripts/release.js",
     "push-git": "node ./scripts/push-git.js",
     "sonarqube": "sonar-scanner",
-    "visual-regression": "dotenv -- turbo run visual-regression --filter @siemens/ix --filter @siemens/ix-aggrid",
-    "test": "dotenv -- turbo run test --filter @siemens/ix --filter @siemens/ix-angular",
+    "visual-regression": "dotenv -- turbo run visual-regression",
+    "test": "dotenv -- turbo run test",
     "prepare": "husky install"
   },
   "dependencies": {
