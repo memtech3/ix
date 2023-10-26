@@ -12,7 +12,7 @@ on:
   workflow_call:
 
 jobs:
-  cache-and-install:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
