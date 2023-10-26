@@ -7,6 +7,7 @@
  * LICENSE file in the root directory of this source tree.
  */
 import fs from 'fs-extra';
+import fsp from 'fs/promises';
 import { Listr } from 'listr2';
 import path from 'path';
 import { writeApi } from './api-tasks';
@@ -277,7 +278,7 @@ const tasks = new Listr<Context>(
     {
       title: 'Generate Typescript class docs',
       task: async () => {
-        return writeTypeScriptFiles(
+        await writeTypeScriptFiles(
           [
             path.join(
               rootPath,
@@ -307,6 +308,27 @@ const tasks = new Listr<Context>(
           fs.copy(reactTestAppPath, docsStaticReactExamples),
           fs.copy(vueTestAppPath, docsStaticVueExamples),
         ]);
+      },
+    },
+    {
+      title: 'Rename code snippets',
+      task: async () => {
+        return Promise.all(
+          [
+            docsStaticWebComponentExamples,
+            docsStaticAngularExamples,
+            docsStaticReactExamples,
+            docsStaticVueExamples,
+          ].flatMap(async (snippetDirectory) => {
+            const files = await fsp.readdir(snippetDirectory);
+            return files.flatMap((filePath) => {
+              return fs.rename(
+                path.join(snippetDirectory, filePath),
+                path.join(snippetDirectory, `${filePath}.txt`)
+              );
+            });
+          })
+        );
       },
     },
   ],
