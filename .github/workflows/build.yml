@@ -48,7 +48,7 @@ jobs:
         run: pnpm playwright install --with-deps
 
       - name: Visual Regression
-        run: pnpm visual-regression --cache-dir=.turbo
+        run: pnpm visual-regression --cache-dir=.turbo --stream
 
       - uses: actions/upload-artifact@v3
         if: always()
