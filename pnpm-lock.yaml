@@ -340,7 +340,7 @@ importers:
         specifier: ^3.3.0
         version: 3.3.0(typescript@4.9.5)
       eslint-config-ix:
-        specifier: '*'
+        specifier: workspace:*
         version: link:../eslint-config
       eslint-plugin-react:
         specifier: ^7.32.2
