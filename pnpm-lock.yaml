@@ -697,6 +697,9 @@ importers:
 
   packages/vue-test-app:
     dependencies:
+      '@siemens/ix':
+        specifier: ~2.1.0-beta.0
+        version: link:../core
       '@siemens/ix-aggrid':
         specifier: ~2.1.0-beta.0
         version: link:../aggrid
