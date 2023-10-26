@@ -1,15 +1,6 @@
-/\*
-
-- SPDX-FileCopyrightText: 2023 Siemens AG
--
-- SPDX-License-Identifier: MIT
--
-- This source code is licensed under the MIT license found in the
-- LICENSE file in the root directory of this source tree.
-  \*/
-  import Tabs from '@theme/Tabs';
-  import TabItem from '@theme/TabItem';
-  import Playground from '@site/src/components/PlaygroundV2';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import Playground from '@site/src/components/PlaygroundV2';
 
 # Modal
 
@@ -31,7 +22,6 @@ The `size` can be configured over the configuration object of the `showModal` fu
 height="18rem"
 name="modal-sizes"
 examplesByName
-
 > </Playground>
 
 ## Custom
