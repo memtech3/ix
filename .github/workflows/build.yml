@@ -24,5 +24,14 @@ jobs:
       - name: Build
         run: pnpm build --cache-dir=.turbo --filter @siemens/ix
 
+  documentation:
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - uses: ./.github/workflows/actions/turbo
+
       - name: Documentation
         run: pnpm build --cache-dir=.turbo --filter documentation
