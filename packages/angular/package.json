@@ -20,6 +20,7 @@
   },
   "peerDependencies": {
     "@angular/core": ">=13.3.12",
+    "@angular/forms": "v13-lts",
     "@siemens/ix-icons": "^2.0.0"
   },
   "devDependencies": {
