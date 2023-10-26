@@ -319,10 +319,10 @@ importers:
         specifier: ^4.1.1
         version: 4.2.4
       '@typescript-eslint/eslint-plugin':
-        specifier: ^5.54.1
+        specifier: ^5
         version: 5.62.0(@typescript-eslint/parser@5.62.0)(eslint@8.52.0)(typescript@4.9.5)
       '@typescript-eslint/parser':
-        specifier: ^5.54.1
+        specifier: ^5
         version: 5.62.0(eslint@8.52.0)(typescript@4.9.5)
       animate.css:
         specifier: ~4.1.1
@@ -341,10 +341,7 @@ importers:
         version: 3.3.0(typescript@4.9.5)
       eslint-config-ix:
         specifier: workspace:*
-        version: link:../eslint-config
-      eslint-plugin-react:
-        specifier: ^7.32.2
-        version: 7.33.2(eslint@8.52.0)
+        version: link:../eslint-config-ix
       fs-extra:
         specifier: ^10.0.0
         version: 10.1.0
@@ -509,7 +506,7 @@ importers:
         specifier: ^4.5.5
         version: 4.9.5
 
-  packages/eslint-config:
+  packages/eslint-config-ix:
     dependencies:
       eslint:
         specifier: latest
@@ -583,7 +580,7 @@ importers:
         version: 5.62.0(eslint@8.52.0)(typescript@4.9.5)
       eslint-config-ix:
         specifier: '*'
-        version: link:../eslint-config
+        version: link:../eslint-config-ix
       eslint-plugin-react:
         specifier: ^7.31.11
         version: 7.33.2(eslint@8.52.0)
@@ -684,7 +681,7 @@ importers:
         version: 5.62.0(eslint@8.52.0)(typescript@4.9.5)
       eslint-config-ix:
         specifier: '*'
-        version: link:../eslint-config
+        version: link:../eslint-config-ix
       eslint-plugin-vue:
         specifier: ^9.9.0
         version: 9.18.0(eslint@8.52.0)

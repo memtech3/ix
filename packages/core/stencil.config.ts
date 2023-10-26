@@ -21,12 +21,12 @@ import path from 'path';
 const copyAssets = [
   {
     src: './../../../node_modules/@siemens/ix-icons/dist',
-    dest: 'build/ix-icons'
+    dest: 'build/ix-icons',
   },
   {
     src: './../../../node_modules/bootstrap',
-    dest: 'build/bootstrap'
-  }
+    dest: 'build/bootstrap',
+  },
 ];
 
 try {
@@ -36,7 +36,7 @@ try {
     const themeFolder = path.join(brandTheme, '..', '..');
     copyAssets.push({
       src: themeFolder,
-      dest: 'build/ix-brand-theme'
+      dest: 'build/ix-brand-theme',
     });
   }
 } catch (e) {
@@ -49,23 +49,23 @@ export const config: Config = {
     appendChildSlotFix: true,
     slotChildNodesFix: true,
     enableImportInjection: true,
-    scopedSlotTextContentFix: true
+    scopedSlotTextContentFix: true,
   },
   testing: {
     testPathIgnorePatterns: ['/node_modules/', '/tests/', '/dist/'],
     setupFilesAfterEnv: ['<rootDir>/src/tests/utils/test/matchMedia.mock.js'],
-    browserArgs: ['--no-sandbox', '--disable-stuid-sandbox']
+    browserArgs: ['--no-sandbox', '--disable-stuid-sandbox'],
   },
   namespace: 'siemens-ix',
   globalStyle: './scss/ix.scss',
   minifyCss: false,
   plugins: [
     sass({
-      includePaths: ['./scss']
+      includePaths: ['./scss'],
     }),
     postcss({
-      plugins: [autoprefixer()]
-    })
+      plugins: [autoprefixer()],
+    }),
   ],
   outputTargets: [
     vueOutputTarget({
@@ -74,7 +74,7 @@ export const config: Config = {
       includeImportCustomElements: true,
       includePolyfills: false,
       includeDefineCustomElements: false,
-      excludeComponents: ['my-component', 'ix-icon']
+      excludeComponents: ['my-component', 'ix-icon'],
     }),
     angularOutputTarget({
       componentCorePackage: '@siemens/ix',
@@ -87,16 +87,16 @@ export const config: Config = {
             'ix-select[ngModel],ix-select[formControlName],ix-select[formControl]',
           event: 'valueChange',
           targetAttr: 'value',
-          type: 'select'
+          type: 'select',
         },
         {
           elementSelectors:
             'ix-toggle[ngModel],ix-toggle[formControlName],ix-toggle[formControl]',
           event: 'checkedChange',
           targetAttr: 'checked',
-          type: 'boolean'
-        }
-      ]
+          type: 'boolean',
+        },
+      ],
     }),
     reactOutputTarget({
       componentCorePackage: '@siemens/ix',
@@ -104,11 +104,11 @@ export const config: Config = {
       includeImportCustomElements: true,
       includePolyfills: false,
       includeDefineCustomElements: false,
-      excludeComponents: ['my-component', 'ix-tree', 'ix-tree-item', 'ix-icon']
+      excludeComponents: ['my-component', 'ix-tree', 'ix-tree-item', 'ix-icon'],
     }),
     {
       type: 'dist',
-      esmLoaderPath: '../loader'
+      esmLoaderPath: '../loader',
     },
     {
       type: 'dist-custom-elements',
@@ -117,10 +117,10 @@ export const config: Config = {
         {
           src: '../scripts/custom-elements',
           dest: 'components',
-          warn: true
-        }
+          warn: true,
+        },
       ],
-      includeGlobalScripts: false
+      includeGlobalScripts: false,
     },
     {
       type: 'docs-custom',
@@ -147,12 +147,12 @@ export const config: Config = {
           'component-doc.json',
           JSON.stringify(docs, undefined, 2).replace(/(?:\\[r])+/g, '')
         );
-      }
+      },
     },
     {
       type: 'www',
       serviceWorker: null,
-      copy: copyAssets
-    }
-  ]
+      copy: copyAssets,
+    },
+  ],
 };
