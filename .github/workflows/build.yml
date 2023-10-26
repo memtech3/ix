@@ -33,8 +33,8 @@ jobs:
 
       - uses: ./.github/workflows/actions/turbo
 
-      - name: Documentation
-        run: pnpm test --cache-dir=.turbo
+      - name: Test
+        run: pnpm run test --cache-dir=.turbo
 
   visual-test:
     needs: [build]
@@ -48,7 +48,7 @@ jobs:
         run: pnpm playwright install --with-deps
 
       - name: Visual Regression
-        run: pnpm run visual-regression --verbosity=3 --cache-dir=.turbo
+        run: pnpm run visual-regression --cache-dir=.turbo
 
       - uses: actions/upload-artifact@v3
         if: always()

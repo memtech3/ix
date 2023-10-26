@@ -24,10 +24,10 @@
       "cache": false
     },
     "visual-regression": {
-      "cache": false
+      "cache": true
     },
     "test": {
-      "cache": false
+      "cache": true
     }
   }
 }
