@@ -49,3 +49,6 @@ jobs:
 
       - name: Build
         run: pnpm build --filter \!documentation
+
+      - name: Documentation
+        run: pnpm build --filter documentation
