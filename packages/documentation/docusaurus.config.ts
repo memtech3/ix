@@ -9,6 +9,8 @@
 import type * as Preset from '@docusaurus/preset-classic';
 import type { Config } from '@docusaurus/types';
 import { themes as prismThemes } from 'prism-react-renderer';
+import figmaPlugin from '@siemens/figma-plugin';
+import path from 'path';
 
 let withBrandTheme = false;
 
@@ -61,13 +63,13 @@ const config: Config = {
           editUrl:
             'https://www.github.com/siemens/ix/edit/main/packages/documentation/',
           remarkPlugins: [
-            // require('@siemens/figma-plugin')({
-            //   baseUrl: baseUrl,
-            //   figmaFolder: `${path.join(__dirname, 'static', 'figma')}`,
-            //   error_image: 'img/figma_error.png',
-            //   apiToken: process.env.FIGMA_API_TOKEN,
-            //   rimraf: true,
-            // }),
+            figmaPlugin({
+              baseUrl: baseUrl,
+              figmaFolder: `${path.join(__dirname, 'static', 'figma')}`,
+              error_image: 'img/figma_error.png',
+              apiToken: process.env.FIGMA_API_TOKEN,
+              rimraf: true,
+            })
           ],
         },
         theme: {
