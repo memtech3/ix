@@ -44,7 +44,7 @@ if (!process.env.CI) {
   );
 
   if (fs.existsSync(themeCssFile)) {
-    libCss.push();
+    libCss.push(themeCssFile);
     withBrandTheme = true;
     console.log('Found optionalDependency @siemens/ix-brand-theme.');
   } else {
