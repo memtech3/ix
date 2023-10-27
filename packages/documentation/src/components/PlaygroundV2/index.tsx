@@ -8,7 +8,13 @@
  */
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { IxIconButton, IxSpinner, IxTabItem, IxTabs } from '@siemens/ix-react';
+import {
+  IxButton,
+  IxIconButton,
+  IxSpinner,
+  IxTabItem,
+  IxTabs,
+} from '@siemens/ix-react';
 import CodeBlock from '@theme/CodeBlock';
 import { useEffect, useState } from 'react';
 import { TargetFramework } from '../Playground/framework-types';
@@ -23,6 +29,8 @@ type SourceFile = {
 function getBranchPath(framework: TargetFramework) {
   let path = 'html';
 
+  const branch = 'main';
+
   if (framework === TargetFramework.ANGULAR) {
     path = 'angular';
   }
@@ -35,7 +43,7 @@ function getBranchPath(framework: TargetFramework) {
     path = 'vue';
   }
 
-  return `siemens/ix/tree/main/packages/${path}-test-app`;
+  return `siemens/ix/tree/${branch}/packages/${path}-test-app`;
 }
 
 function stripHeader(code: string) {
@@ -143,14 +151,13 @@ function SourceCodePreview(props: {
   files?: Record<TargetFramework, string[]>;
   examplesByName?: boolean;
 }) {
-  const [isFetching, setFetching] = useState(false);
+  const [isFetching, setFetching] = useState(true);
   const baseUrl = useBaseUrl('/auto-generated');
 
   const [files, setFiles] = useState<SourceFile[]>([]);
   const [selectedFile, setSelectedFile] = useState<number>(0);
 
   useEffect(() => {
-    console.log(props);
     if (props.examplesByName) {
       let filesToFetch = [];
 
@@ -170,16 +177,21 @@ function SourceCodePreview(props: {
         filesToFetch = [`${props.name}.vue`];
       }
 
-      fetchHTMLSource(baseUrl, props.framework, filesToFetch).then((files) =>
-        setFiles(files.filter((f) => f))
-      );
+      setFetching(true);
+      fetchHTMLSource(baseUrl, props.framework, filesToFetch).then((files) => {
+        setFiles(files.filter((f) => f));
+        setFetching(false);
+      });
       return;
     }
     if (props.files && props.files[props.framework]) {
       const filesToFetch = props.files[props.framework];
-      fetchHTMLSource(baseUrl, props.framework, filesToFetch).then((files) =>
-        setFiles(files.filter((f) => f))
-      );
+
+      setFetching(true);
+      fetchHTMLSource(baseUrl, props.framework, filesToFetch).then((files) => {
+        setFiles(files.filter((f) => f));
+        setFetching(false);
+      });
     }
   }, [props.framework]);
 
@@ -229,6 +241,7 @@ function SourceCodePreview(props: {
 export default function PlaygroundV2(props: PlaygroundV2Props) {
   const [tab, setTab] = useState<TargetFramework>(TargetFramework.PREVIEW);
   const baseUrlAssets = useBaseUrl('/img');
+  const iframe = useBaseUrl('/webcomponent-examples/dist/preview-examples');
 
   const isTabVisible = (framework: TargetFramework) => {
     if (props.examplesByName) {
@@ -265,7 +278,14 @@ export default function PlaygroundV2(props: PlaygroundV2Props) {
 
         <div className={styles.Files_Toolbar}>
           {tab === TargetFramework.PREVIEW ? (
-            <IxIconButton ghost size="16" icon={`open-external`}></IxIconButton>
+            <IxIconButton
+              ghost
+              size="16"
+              icon={`open-external`}
+              onClick={() => {
+                window.open(`${iframe}/${props.name}.html`);
+              }}
+            ></IxIconButton>
           ) : (
             <>
               <IxIconButton

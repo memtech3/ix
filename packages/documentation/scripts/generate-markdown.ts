@@ -111,6 +111,7 @@ const tasks = new Listr<Context>(
         await fs.ensureDir(docsExampleAngularPath);
         await fs.ensureDir(docsExampleVuePath);
 
+        rimraf.sync(docsStaticExamples);
         await fs.ensureDir(docsStaticWebComponentExamples);
         await fs.ensureDir(docsStaticAngularExamples);
         await fs.ensureDir(docsStaticReactExamples);
