@@ -11,6 +11,7 @@ import type { Config } from '@docusaurus/types';
 import { themes as prismThemes } from 'prism-react-renderer';
 import figmaPlugin from '@siemens/figma-plugin';
 import path from 'path';
+import fs from 'fs';
 
 let withBrandTheme = false;
 
@@ -33,8 +34,22 @@ if (!process.env.CI) {
     console.warn('optionalDependency @siemens/ix-brand-theme not found!');
   }
 } else {
-  libCss.push(path.join(__dirname, '.build-temp', 'package', 'dist', 'ix-brand-theme', 'ix-brand-theme.css'));
-  withBrandTheme = true;
+  const themeCssFile = path.join(
+    __dirname,
+    '.build-temp',
+    'package',
+    'dist',
+    'ix-brand-theme',
+    'ix-brand-theme.css'
+  );
+
+  if (fs.existsSync(themeCssFile)) {
+    libCss.push();
+    withBrandTheme = true;
+    console.log('Found optionalDependency @siemens/ix-brand-theme.');
+  } else {
+    console.warn('optionalDependency @siemens/ix-brand-theme not found!');
+  }
 }
 
 const customCss = [
@@ -75,7 +90,7 @@ const config: Config = {
               error_image: 'img/figma_error.png',
               apiToken: process.env.FIGMA_API_TOKEN,
               rimraf: true,
-            })
+            }),
           ],
         },
         theme: {
