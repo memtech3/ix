@@ -13,6 +13,7 @@ import path from 'path';
 import { writeApi } from './api-tasks';
 import { writeTypeScriptFiles } from './ts-class-tasks';
 import { escapeMarkdown } from './utils';
+import rimraf from 'rimraf';
 
 const branch = process.env.IX_DOCS_BRANCH ?? 'main';
 const rootPath = path.join(__dirname, '../');
@@ -87,6 +88,8 @@ const docsStaticAngularExamples = path.join(docsStaticExamples, 'angular');
 const docsStaticReactExamples = path.join(docsStaticExamples, 'react');
 const docsStaticVueExamples = path.join(docsStaticExamples, 'vue');
 
+const iframeFrameDist = path.join(iframeExampleCodePath, 'dist');
+
 interface Context {
   names: string[];
   htmlExamples: string[];
@@ -113,7 +116,9 @@ const tasks = new Listr<Context>(
         await fs.ensureDir(docsStaticReactExamples);
         await fs.ensureDir(docsStaticVueExamples);
 
+        rimraf.sync(iframeExampleCodePath);
         await fs.ensureDir(iframeExampleCodePath);
+        await fs.ensureDir(iframeFrameDist);
       },
     },
     {
@@ -298,8 +303,6 @@ const tasks = new Listr<Context>(
     {
       title: 'Copy examples to dist',
       task: async () => {
-        const iframeFrameDist = path.join(iframeExampleCodePath, 'dist');
-
         const copy = [
           fs.copy(htmlTestAppPath, docsStaticWebComponentExamples),
           fs.copy(
