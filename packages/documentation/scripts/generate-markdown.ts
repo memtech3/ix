@@ -298,16 +298,36 @@ const tasks = new Listr<Context>(
     {
       title: 'Copy examples to dist',
       task: async () => {
-        return Promise.all([
+        const iframeFrameDist = path.join(iframeExampleCodePath, 'dist');
+
+        const copy = [
           fs.copy(htmlTestAppPath, docsStaticWebComponentExamples),
           fs.copy(
             path.join(examplePath, 'html-test-app', 'dist'),
-            path.join(iframeExampleCodePath, 'dist')
+            iframeFrameDist
           ),
           fs.copy(angularTestAppPath, docsStaticAngularExamples),
           fs.copy(reactTestAppPath, docsStaticReactExamples),
           fs.copy(vueTestAppPath, docsStaticVueExamples),
-        ]);
+        ];
+
+        // Copy theme to examples folder
+        const additionalThemeSource = path.join(
+          rootPath,
+          '.build-temp',
+          'package'
+        );
+
+        if (fs.pathExistsSync(additionalThemeSource)) {
+          const additionalThemeTarget = path.join(
+            iframeFrameDist,
+            'additional-theme',
+            'ix-brand-theme'
+          );
+          copy.push(fs.copy(additionalThemeSource, additionalThemeTarget));
+        }
+
+        return Promise.all(copy);
       },
     },
     {
