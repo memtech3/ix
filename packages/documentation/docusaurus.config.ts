@@ -20,15 +20,21 @@ const libCss = [
   require.resolve('@siemens/ix/dist/siemens-ix/theme/legacy-classic-light.css'),
 ];
 
-try {
-  const path = require.resolve(
-    '@siemens/ix-brand-theme/dist/ix-brand-theme/ix-brand-theme.css'
-  );
-  console.log('Found optionalDependency @siemens/ix-brand-theme.');
-  libCss.push(path);
+if (!process.env.CI) {
+  try {
+    // Check if theme is existing inside node_modes
+    const path = require.resolve(
+      '@siemens/ix-brand-theme/dist/ix-brand-theme/ix-brand-theme.css'
+    );
+    console.log('Found optionalDependency @siemens/ix-brand-theme.');
+    libCss.push(path);
+    withBrandTheme = true;
+  } catch (e) {
+    console.warn('optionalDependency @siemens/ix-brand-theme not found!');
+  }
+} else {
+  libCss.push(path.join(__dirname, '.build-temp', 'package', 'dist', 'ix-brand-theme', 'ix-brand-theme.css'));
   withBrandTheme = true;
-} catch (e) {
-  console.warn('optionalDependency @siemens/ix-brand-theme not found!');
 }
 
 const customCss = [

@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "npm run generate-markdown && docusaurus start",
-    "build": "npm run generate-markdown && docusaurus build",
+    "start": "pnpm run generate-markdown && docusaurus start",
+    "build": "pnpm run download-theme && pnpm run generate-markdown && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
@@ -15,6 +15,7 @@
     "write-translations": "docusaurus write-translations",
     "write-heading-ids": "docusaurus write-heading-ids",
     "typecheck": "tsc",
+    "download-theme": "ts-node -P ./scripts/tsconfig.json ./scripts/download-theme.ts",
     "generate-markdown": "ts-node -P ./scripts/tsconfig.json ./scripts/generate-markdown.ts"
   },
   "dependencies": {
@@ -43,11 +44,14 @@
     "@docusaurus/module-type-aliases": "3.0.0-rc.0",
     "@docusaurus/tsconfig": "3.0.0-rc.0",
     "@docusaurus/types": "3.0.0-rc.0",
-    "@siemens/figma-plugin": "*",
+    "@siemens/figma-plugin": "workspace:^",
     "@types/fs-extra": "^9.0.13",
     "@types/rimraf": "^3.0.2",
+    "@types/tar": "^6.1.7",
+    "axios": "^1.5.1",
     "listr2": "^7.0.1",
     "rimraf": "^3.0.2",
+    "tar": "^6.2.0",
     "ts-node": "^10.9.1",
     "typedoc": "^0.24.8",
     "typescript": "~5.2.2"
