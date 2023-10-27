@@ -24,13 +24,13 @@ const ci = process.env.CI;
   rimraf.sync(path.join(file, '..'));
 
   if (!ci) {
-    console.log('No CI! Skip download theme');
+    console.log('No CI! Skip download theme.');
     process.exit(0);
   }
 
   if (!token) {
-    console.error('No CSC token provided');
-    process.exit(1);
+    console.error('No CSC! Skip download theme.');
+    process.exit(0);
   }
 
   ensureDirSync(path.join(file, '..'));
