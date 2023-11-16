@@ -374,7 +374,7 @@ export class Dropdown {
     let anchor = this.anchorElement?.closest('ix-dropdown-item');
 
     if (!anchor) {
-      if (this.anchorElement.shadowRoot) {
+      if (this.anchorElement && this.anchorElement.shadowRoot) {
         anchor =
           this.anchorElement.shadowRoot.querySelector('ix-dropdown-item');
 
