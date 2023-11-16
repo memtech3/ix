@@ -370,12 +370,19 @@ export class Dropdown {
     return element.closest('ix-dropdown');
   }
 
-  private isAnchorSubmenu(): boolean {
-    const anchor =
-      this.anchorElement?.closest('ix-dropdown-item') ||
-      this.anchorElement?.shadowRoot.querySelector('ix-dropdown-item');
+  private isAnchorSubmenu() {
+    let anchor = this.anchorElement?.closest('ix-dropdown-item');
 
-    return !!anchor;
+    if (!anchor) {
+      if (this.anchorElement.shadowRoot) {
+        anchor =
+          this.anchorElement.shadowRoot.querySelector('ix-dropdown-item');
+
+        return !!anchor;
+      }
+      return false;
+    }
+    return true;
   }
 
   private toggle(event: Event) {
@@ -498,9 +505,10 @@ export class Dropdown {
     if (this.isAnchorSubmenu()) {
       const shadowDropDownComponent =
         this.anchorElement.shadowRoot.querySelector('ix-dropdown-item');
+
       if (this.anchorElement?.tagName === 'IX-DROPDOWN-ITEM') {
         (this.anchorElement as HTMLIxDropdownItemElement).isSubMenu = true;
-      } else if (shadowDropDownComponent) {
+      } else if (shadowDropDownComponent && this.anchorElement.id) {
         shadowDropDownComponent.isSubMenu = true;
       }
     }
