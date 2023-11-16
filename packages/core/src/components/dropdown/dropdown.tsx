@@ -501,19 +501,13 @@ export class Dropdown {
       ? this.resolveElement(this.anchor)
       : this.resolveElement(this.trigger));
 
-    console.log(this.anchorElement);
-    console.log(this.isAnchorSubmenu());
-    console.log(this.anchorElement?.tagName === 'IX-DROPDOWN-ITEM');
-
     if (this.isAnchorSubmenu()) {
-      const tagName = this.anchorElement?.tagName;
-
-      if (tagName === 'IX-DROPDOWN-ITEM') {
+      const shadowDropDownComponent =
+        this.anchorElement.shadowRoot.querySelector('ix-dropdown-item');
+      if (this.anchorElement?.tagName === 'IX-DROPDOWN-ITEM') {
         (this.anchorElement as HTMLIxDropdownItemElement).isSubMenu = true;
-      } else if (tagName === 'IX-MENU-AVATAR-ITEM') {
-        const dropdownItem =
-          this.anchorElement?.shadowRoot.querySelector('ix-dropdown-item');
-        dropdownItem.isSubMenu = true;
+      } else if (shadowDropDownComponent) {
+        shadowDropDownComponent.isSubMenu = true;
       }
     }
   }
