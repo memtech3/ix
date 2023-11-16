@@ -370,18 +370,12 @@ export class Dropdown {
     return element.closest('ix-dropdown');
   }
 
-  private isAnchorSubmenu() {
-    let anchor = this.anchorElement?.closest('ix-dropdown-item');
+  private isAnchorSubmenu(): boolean {
+    const anchor =
+      this.anchorElement?.closest('ix-dropdown-item') ||
+      this.anchorElement?.shadowRoot.querySelector('ix-dropdown-item');
 
-    if (!anchor) {
-      anchor = this.anchorElement?.shadowRoot.querySelector('ix-dropdown-item');
-      if (!anchor) {
-        return false;
-      }
-      return true;
-    }
-
-    return true;
+    return !!anchor;
   }
 
   private toggle(event: Event) {
