@@ -371,9 +371,14 @@ export class Dropdown {
   }
 
   private isAnchorSubmenu() {
-    const anchor = this.anchorElement?.closest('ix-dropdown-item');
+    let anchor = this.anchorElement?.closest('ix-dropdown-item');
+
     if (!anchor) {
-      return false;
+      anchor = this.anchorElement?.shadowRoot.querySelector('ix-dropdown-item');
+      if (!anchor) {
+        return false;
+      }
+      return true;
     }
 
     return true;
@@ -496,11 +501,20 @@ export class Dropdown {
       ? this.resolveElement(this.anchor)
       : this.resolveElement(this.trigger));
 
-    if (
-      this.isAnchorSubmenu() &&
-      this.anchorElement?.tagName === 'IX-DROPDOWN-ITEM'
-    ) {
-      (this.anchorElement as HTMLIxDropdownItemElement).isSubMenu = true;
+    console.log(this.anchorElement);
+    console.log(this.isAnchorSubmenu());
+    console.log(this.anchorElement?.tagName === 'IX-DROPDOWN-ITEM');
+
+    if (this.isAnchorSubmenu()) {
+      const tagName = this.anchorElement?.tagName;
+
+      if (tagName === 'IX-DROPDOWN-ITEM') {
+        (this.anchorElement as HTMLIxDropdownItemElement).isSubMenu = true;
+      } else if (tagName === 'IX-MENU-AVATAR-ITEM') {
+        const dropdownItem =
+          this.anchorElement?.shadowRoot.querySelector('ix-dropdown-item');
+        dropdownItem.isSubMenu = true;
+      }
     }
   }
 
